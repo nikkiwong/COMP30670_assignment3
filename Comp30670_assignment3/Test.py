@@ -2,7 +2,7 @@
 
 from nose.tools import *
 from led_file import *
-from setup import read_file
+from main import read_file
 
 def testing():
     filename = "C:\Users\Nikki\Desktop\CS UCD\software engineering\/assignment_3\/testfile.txt"
@@ -10,10 +10,7 @@ def testing():
     eq_(len(buffer), 0, "The values do not match for the buffer...")
 
 def testing_line():
-    pass
-
-def testing_line2():
-    pass
+    test =
 
 def tester_run():
     pass
@@ -21,3 +18,5 @@ def tester_run():
 def test_count():
     pass
 
+def test_multi_count():
+    pass
