@@ -7,7 +7,7 @@ from setup import read_file
 def testing():
     filename = "C:\Users\Nikki\Desktop\CS UCD\software engineering\/assignment_3\/testfile.txt"
     buffer = read_file(filename == filename)
-    eq_(len(buffer), 0, "The values do not match for the buffer..")
+    eq_(len(buffer), 0, "The values do not match for the buffer...")
 
 def testing_line():
     pass
