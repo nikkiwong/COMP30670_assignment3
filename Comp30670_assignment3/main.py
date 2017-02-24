@@ -1,3 +1,4 @@
+import argparse
 import urllib.request
 help(urllib.request.urlopen)
 
@@ -9,21 +10,20 @@ def read_file():
     for line in buffer.split('\n'):
         values = line.strip().split()
 
-#request
-    uri = "http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt"
-    req = urllib.request.urlopen(uri)
-
-    buffer = req.read().decode('utf-8')
 
 def read_uri(fname):
     if fname.startswith('http'):
-        #use urllib.request.urlopen(uri)
-        read_file()
+        # request
+        #uri = "http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt"
+        req = urllib.request.urlopen(fname)
+        buffer = req.read().decode('utf-8')
     else:
-        #use open(uri)
+        read_file()
     return pass
 
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--input', help='input help')
+args = parser.parse_args()
 
-
-
+filename = args.input
