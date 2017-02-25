@@ -5,7 +5,7 @@ class FooTests(unittest.TestCase):
     def setUp(self):
         self.lights = Lights(a, b, c, d)
 
-    def light_status_match(self):
+    def test_light_status_match(self):
         self.failUnless(False)
         self.failIf(False)
 
@@ -36,6 +36,10 @@ class FooTests(unittest.TestCase):
 
 def main():
     unittest.main()
+    fooSuite = unittest.TestLoader().loadTestsFromTestCase(FooTest)
+
+    fooRunner = unittest.TextTestRunner()
+    fooResult = fooRunner.run(fooSuite)
 
 if __name__ == '__main__':
     main()
