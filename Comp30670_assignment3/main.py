@@ -11,18 +11,18 @@ def read_file():
         values = line.strip().split()
 
 
-def read_uri(fname):
+def read_uri():
     if fname.startswith('http'):
         # request
-        #uri = "http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt"
-        req = urllib.request.urlopen(fname)
+        uri = "http://claritytrec.ucd.ie/~alawlor/comp30670/input_assign3.txt"
+        req = urllib.request.urlopen(uri)
         buffer = req.read().decode('utf-8')
     else:
         read_file()
-    return pass
+    #return
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='a program to count lights turned on')
 parser.add_argument('--input', help='input help')
 args = parser.parse_args()
 

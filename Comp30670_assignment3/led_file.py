@@ -6,4 +6,17 @@ class Lights:
         self.c = c
         self.d = d
 
-    def matches(self, ):
+    def light_status_match(self):
+        pass
+
+    def count(self):
+        pass
+
+    def turnOn(self):
+        pass
+
+    def turnOff(self):
+        pass
+
+    def switch(self):
+        pass
