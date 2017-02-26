@@ -7,6 +7,10 @@ class LED_Tests(unittest.TestCase):
 
     # def setUp(self):
         # self.lights = Lights(a, b, c, d)
+    def test_GridSize(self):
+        gs = Lights(10).create_grid()
+        grid = [[0] * 10 for _ in range(10)]
+        self.assertEqual(gs, grid, "Grid size don't match")
 
     def test_LightStatusMatch(self):
         L = Lights.initial_light_status

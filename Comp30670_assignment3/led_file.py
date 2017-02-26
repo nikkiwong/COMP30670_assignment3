@@ -1,10 +1,12 @@
-#where I will write the codes for the
+# where I will write the codes for the
 class Lights:
-    def __init__(self, a, b, c, d):
-        self.a = a
-        self.b = b
-        self.c = c
-        self.d = d
+    def __init__(self, s):
+        self.size = s
+
+    def create_grid(self):
+        grid = [[0] * self.size for _ in range(self.size)]
+        return grid
+
 
     def initial_light_status(self):
         pass
@@ -20,3 +22,11 @@ class Lights:
 
     def switch(self):
         pass
+
+# grid = Lights(10).create_grid()
+#
+# print(grid)
+
+
+# grid = [[0] * 10 for _ in range(10)]
+# print(grid)
