@@ -1,36 +1,61 @@
-import led_file
-import main
+from led_file import Lights
+import mainfile
 import unittest
+
 
 class LED_Tests(unittest.TestCase):
 
-    def setUp(self):
-        self.lights = Lights(a, b, c, d)
+    # def setUp(self):
+        # self.lights = Lights(a, b, c, d)
 
-    def test_light_status_match(self):
-        self.assertTrue()
+    def test_LightStatusMatch(self):
+        L = Lights.initial_light_status
+        self.assertEqual( L, 0, "Not all lights are off")
 
-    def test_count(self):
-        self.assertEqual()
+    def test_LightStatusNotMatch(self):
+        L = Lights.initial_light_status
+        self.assertNotEqual(L, 1, "Not all lights are off")
 
-    def test_turnOn(self):
-        self.assertEqual()
+    def test_CountMatch(self):
+        C = Lights.count
+        self.assertEqual(C, 0, "The lights on count does not match")
 
-    def test_turnOff(self):
-        self.assertEqual()
+    def test_CountNotMatch(self):
+        C = Lights.count
+        self.assertEqual(C, 0, "The lights on count does not match")
 
-    def test_switch(self):
-        self.assertEqual()
+    def test_TurnOnWorks(self):
+        on = Lights.turnOn
+        self.assertTrue(on, "Lights didn't turn on")
 
-    def test_read_file_match(self):
-        self.assertEqual()
+    def test_TurnOffWorks(self):
+        off = Lights.turnOff
+        self.assertTrue(off, "Lights didn't turn off")
 
-    def test_read_file(self):
-        self.assertEqual()
+    def test_SwitchWorks(self):
+        sw = Lights.switch
+        self.assertTrue(sw, "Lights didn't switch")
 
+    def test_ReadFileMatch(self):
+        fm = mainfile.read_uri
+        self.assertEqual(fm, 0, "The file wasn't read correctly")
 
+    def test_ReadFileNotMatch(self):
+        fm = mainfile.read_uri
+        self.assertNotEqual(fm, 0, "The file wasn't read correctly")
+
+    def test_ReadFileCountMatch(self, ):
+        fm = mainfile.read_uri
+        self.assertEqual(fm, 0, "The final count does not match")
+
+    def test_ReadFileCountNotMatch(self):
+        fm = mainfile.read_uri
+        self.assertNotEqual(fm, 0, "The final count does not match")
+
+#
 def main():
     unittest.main(verbosity=0)
+
 
 if __name__ == '__main__':
     main()

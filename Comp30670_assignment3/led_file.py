@@ -6,7 +6,7 @@ class Lights:
         self.c = c
         self.d = d
 
-    def light_status_match(self):
+    def initial_light_status(self):
         pass
 
     def count(self):

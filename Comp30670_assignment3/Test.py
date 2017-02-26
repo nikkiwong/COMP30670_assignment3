@@ -2,7 +2,7 @@
 
 from nose.tools import *
 from led_file import *
-from main import read_file
+from mainfile import read_file
 
 def testing():
     filename = "C:\Users\Nikki\Desktop\CS UCD\software engineering\/assignment_3\/testfile.txt"
