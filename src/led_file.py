@@ -16,22 +16,6 @@ class Lights:
             for col in range(x1, x2+1):
                 self.A[row][col]=True
         return self.A
-        
-        # coord=[x1,y1,x2,y2]
-        # coord = [-2, 11, -4, 22]
-#         coord = get_coord()
-#         for i in range(len(coord)):
-#             if coord[i] < 0:
-#                 coord[i] = 0
-#             elif coord[i] > len(self.grid):
-#                 coord[i] = len(self.grid) - 1
-# 
-#         while coord[1] <= coord[3]:
-#             x = coord[0]
-#             while x <= coord[2]:
-#                 self.A[coord[1]][x] = True
-#                 x += 1
-#             coord[1] += 1
 
     def turnOff(self, x1, y1, x2, y2):
         for row in range(y1, y2+1):
