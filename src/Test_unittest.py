@@ -1,5 +1,5 @@
 from led_file import Lights
-import mainfile
+import main
 import unittest
 
 
