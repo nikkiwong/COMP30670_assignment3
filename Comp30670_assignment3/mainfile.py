@@ -24,6 +24,7 @@ def read_uri(fname):
 
         for line in buffer.split('\n'):
             values = line.strip().split()
+            #put the values into a tuple
     #return
 
 

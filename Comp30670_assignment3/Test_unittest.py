@@ -4,13 +4,12 @@ import unittest
 
 
 class LED_Tests(unittest.TestCase):
-
+    grid = [[False] * 10 for _ in range(10)]
     # def setUp(self):
         # self.lights = Lights(a, b, c, d)
     def test_GridSize(self):
         gs = Lights(10).create_grid()
-        grid = [[0] * 10 for _ in range(10)]
-        self.assertEqual(gs, grid, "Grid size don't match")
+        self.assertEqual(gs, LED_Tests.grid, "Grid size don't match")
 
     def test_LightStatusMatch(self):
         L = Lights.initial_light_status
@@ -21,16 +20,19 @@ class LED_Tests(unittest.TestCase):
         self.assertNotEqual(L, 1, "Not all lights are off")
 
     def test_CountMatch(self):
-        C = Lights.count
-        self.assertEqual(C, 0, "The lights on count does not match")
+        C = Lights(10).count()
+        counts = sum(row.count(True) for row in LED_Tests.grid)
+        self.assertEqual(C, counts, "The lights on count does not match")
 
     def test_CountNotMatch(self):
-        C = Lights.count
-        self.assertEqual(C, 0, "The lights on count does not match")
+        C = Lights(11).count()
+        counts = sum(row.count(True) for row in LED_Tests.grid)
+        self.assertEqual(C, counts, "The lights on count does not match")
 
     def test_TurnOnWorks(self):
-        on = Lights.turnOn
-        self.assertTrue(on, "Lights didn't turn on")
+        on = Lights(10).turnOn()
+        # Lon =
+        self.assertEqual(on, Lon, "Number of lights turnrf on didn't match")
 
     def test_TurnOffWorks(self):
         off = Lights.turnOff

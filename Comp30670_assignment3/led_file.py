@@ -1,24 +1,52 @@
-# where I will write the codes for the
+import numpy as np
+
 class Lights:
     def __init__(self, s):
         self.size = s
+        self.grid = [[False] * self.size for _ in range(self.size)]
 
     def create_grid(self):
-        grid = [[0] * self.size for _ in range(self.size)]
-        return grid
-
+        self.grid = [[False] * self.size for _ in range(self.size)]
+        self.A = np.array(self.grid)
+        return self.A
 
     def initial_light_status(self):
-        pass
+        '''if we are reading from a new file then reset all values to boolean false or 0'''
 
     def count(self):
+        # [row.count(True) for row in self.grid]
+        lightsOnCount = sum(row.count(True) for row in self.grid)
+        return lightsOnCount
+
+    def get_coord(self):
+        #will get the coords from the read_uri method. This is temporary method
         pass
 
     def turnOn(self):
-        pass
+        # coord=[x1,y1,x2,y2]
+        # coord = [-2, 11, -4, 22]
+        coord = get_coord()
+        for i in range(len(coord)):
+            if coord[i] < 0:
+                coord[i] = 0
+            elif coord[i] > len(self.grid):
+                coord[i] = len(self.grid) - 1
+
+        while coord[1] <= coord[3]:
+            x = coord[0]
+            while x <= coord[2]:
+                self.A[coord[1]][x] = True
+                x += 1
+            coord[1] += 1
 
     def turnOff(self):
-        pass
+        for i in self.A:
+            for j in i:
+                if j==True:
+                    j=False
+
+
+
 
     def switch(self):
         pass
@@ -27,6 +55,5 @@ class Lights:
 #
 # print(grid)
 
-
 # grid = [[0] * 10 for _ in range(10)]
-# print(grid)
+print(Lights(10).create_grid())
