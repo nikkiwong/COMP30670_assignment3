@@ -38,6 +38,10 @@ class Lights:
                 self.A[coord[1]][x] = True
                 x += 1
             coord[1] += 1
+            
+#         for row in range(y1, y2+1):
+#             for col in range(x1, x2+1):
+#                 self.grid[row][col]=True
 
     def turnOff(self):
         for i in self.A:
@@ -57,3 +61,14 @@ class Lights:
 
 # grid = [[0] * 10 for _ in range(10)]
 print(Lights(10).create_grid())
+
+def execute_command(self, cmd_str):
+    #if the command is turn onthen run turn on method
+    #else if command is turn off etc etc
+def parse_cmd_str:
+ #should take a string and figure out what the commands and coords are. 
+ #returns cmd etc
+ 
+ 
+ 
+ #turn on, turn off, switch in the order...
