@@ -4,6 +4,7 @@ import numpy as np
 from led_file import Lights
 
 import time
+from _operator import length_hint
 
 start = time.time()
 
@@ -21,21 +22,27 @@ def parse(filename):
     buffer = read_uri(filename=filename)
 
     newfile = []
-    plaintext = buffer.replace(',', ' ')
-    for line in plaintext.split('\n'):
-        values = line.strip().split()
+    line = buffer.replace(',', ' ')
+    
+    line = line.split('\n')
+    size = int(line[0])
+    
+    for x in line:
+        values = x.strip().split()
         if 'through' in values:
             values.remove('through');
         if len(values)>1 and values[0]=='turn':
             values[0:2] = [' '.join(values[0:2])]
-        newfile.append(values)     
+        if len(values)==0 or values[0]=='turn on' or values[0]=='turn off' or values[0]=='switch' :
+            newfile.append(values)    
     A=np.array(newfile)
-    return A
+    return A, size
 
 def execute_cmd(filename):
     '''A function that parses the file further and executes the commands'''
-    A = test_coord(filename)
-    size = int(A[0][0])
+    B = test_coord(filename)
+    size = B[1]
+    A = B[0]
     light = Lights(size)
     for i in range (1, len(A)-1):
         cmd = A[i][0]
@@ -54,8 +61,9 @@ def execute_cmd(filename):
     
 def test_coord(filename):
     '''A function to make sure that the co-ordinates are within the grid size given'''
-    coord = parse(filename)
-    size = int(coord[0][0])
+    A = parse(filename)
+    coord = A[0]
+    size = A[1]
     for i in range(1, len(coord)-1):
         pts1 = int(coord[i][1])
         pts2 = int(coord[i][2])
@@ -81,8 +89,7 @@ def test_coord(filename):
         elif pts4>size:
             pts4=size-1
         coord[i][4]=pts4
-#         print(coord[i][1], coord[i][2], coord[i][3], coord[i][4])
-    return coord
+    return coord, size
     
 def main():
     parser = argparse.ArgumentParser()
@@ -92,6 +99,7 @@ def main():
     filename = args.input
     f = execute_cmd(filename)
     print(f)
+    
 
 if __name__ == '__main__':
     main()
@@ -99,3 +107,4 @@ if __name__ == '__main__':
 end = time.time()
 print(end - start, 'seconds')
 #print('{}{}').__format__(filename, tester.count...
+    
