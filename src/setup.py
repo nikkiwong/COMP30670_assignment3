@@ -10,7 +10,7 @@ setup(name="led_file",
       license="GPL3",
       packages=['src'],
       entry_points={
-          'console_scripts':['led_file=src.main:main']
+          'console_scripts':['led_test=src.main:main']
       },
       install_requires=[
           'nose',

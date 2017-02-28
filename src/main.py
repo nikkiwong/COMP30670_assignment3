@@ -1,7 +1,7 @@
 import argparse
 import urllib.request
 import numpy as np
-from led_file import *
+from led_file import Lights
 
 import time
 from _operator import length_hint
@@ -34,7 +34,7 @@ def parse(filename):
         if len(values)>1 and values[0]=='turn':
             values[0:2] = [' '.join(values[0:2])]
         if len(values)==0 or values[0]=='turn on' or values[0]=='turn off' or values[0]=='switch' :
-            newfile.append(values)    
+            newfile.append(values)  
     A=np.array(newfile)
     return A, size
 
