@@ -23,6 +23,10 @@ def parse(filename):
             values[0:2] = [' '.join(values[0:2])]
         newfile.append(values)     
     A=np.array(newfile)
+    return A
+
+def execute_cmd(filename):
+    A = test_coord(filename)
     size = int(A[0][0])
     light = Lights(size)
     for i in range (1, len(A)-1):
@@ -32,14 +36,23 @@ def parse(filename):
         x2 = int(A[i][3])
         y2 = int(A[i][4])
         if cmd == 'turn on':
-            B = light.turnOn(x1, y1, x2, y2)
+            light.turnOn(x1, y1, x2, y2)
         elif cmd == 'turn off':
-            B = light.turnOff(x1, y1, x2, y2)
+            light.turnOff(x1, y1, x2, y2)
         elif cmd == 'switch':
-            B = light.switch(x1, y1, x2, y2)
+            light.switch(x1, y1, x2, y2)
 
     return light.count()
     
+def test_coord(filename):
+    coord = parse(filename)
+    size = int(coord[0][0])
+    for i in range(1, len(coord)):
+        if int(coord[i])<0:
+            coord[i]=0
+        elif int(coord[i])>size:
+            coord[i]=size-1
+    return coord
     
 def main():
     parser = argparse.ArgumentParser()
@@ -47,7 +60,7 @@ def main():
 #     parser.add_argument('--kind', help='class type')
     args = parser.parse_args()
     filename = args.input
-    f = parse(filename)
+    f = execute_cmd(filename)
     print(f)
 
 if __name__ == '__main__':
