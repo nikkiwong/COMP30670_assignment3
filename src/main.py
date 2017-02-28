@@ -65,18 +65,23 @@ def test_coord(filename):
             pts1=0
         elif pts1>size:
             pts1=size-1
+        coord[i][1]=pts1
         if pts2<0:
             pts2=0
         elif pts2>size:
             pts2=size-1
+        coord[i][2]=pts2
         if pts3<0:
             pts3=0
-        if pts3>size:
+        elif pts3>size:
             pts3=size-1
+        coord[i][3]=pts3
         if pts4<0:
             pts4=0
         elif pts4>size:
             pts4=size-1
+        coord[i][4]=pts4
+#         print(coord[i][1], coord[i][2], coord[i][3], coord[i][4])
     return coord
     
 def main():

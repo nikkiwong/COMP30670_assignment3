@@ -14,7 +14,7 @@ class Lights:
         lightsOnCount = np.count_nonzero(self.A)
         return lightsOnCount
         
-    def turnOn(self, x1, y1, x2, y2):
+    def turnOn(self, x1, y1, x2, y2): 
         for row in range(y1, y2+1):
             for col in range(x1, x2+1):
                 self.A[row][col]=True
