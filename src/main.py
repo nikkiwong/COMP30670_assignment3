@@ -1,7 +1,7 @@
 import argparse
 import urllib.request
 import numpy as np
-from led_file import Lights
+from led_file import *
 
 import time
 from _operator import length_hint
