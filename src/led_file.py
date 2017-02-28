@@ -33,14 +33,3 @@ class Lights:
                 self.A[row][col]= not self.A[row][col]
         return self.A
 
-# grid = Lights(10).create_grid()
-#
-# print(grid)
-
-# grid = [[0] * 10 for _ in range(10)]
-
-def execute_command(self, cmd_str):
-    pass
-    #if the command is turn onthen run turn on method
-    #else if command is turn off etc etc
-#turn on, turn off, switch in the order...
