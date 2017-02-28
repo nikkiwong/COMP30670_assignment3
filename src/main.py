@@ -48,9 +48,9 @@ def test_coord(filename):
     coord = parse(filename)
     size = int(coord[0][0])
     for i in range(1, len(coord)):
-        if int(coord[i])<0:
+        if coord[i]<0:
             coord[i]=0
-        elif int(coord[i])>size:
+        elif coord[i]>size:
             coord[i]=size-1
     return coord
     
