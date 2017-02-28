@@ -23,21 +23,14 @@ def parse(filename):
             values[0:2] = [' '.join(values[0:2])]
         newfile.append(values)     
     A=np.array(newfile)
-    print(A)
     size = int(A[0][0])
     light = Lights(size)
-    print(len(A))
-    for i in range (1, len(A)-2):
+    for i in range (1, len(A)-1):
         cmd = A[i][0]
-        print(cmd)
         x1 = int(A[i][1])
-        print(x1)
         y1 = int(A[i][2])
-        print(y1)
         x2 = int(A[i][3])
-        print(x2)
         y2 = int(A[i][4])
-        print(y2)
         if cmd == 'turn on':
             B = light.turnOn(x1, y1, x2, y2)
         elif cmd == 'turn off':
@@ -45,7 +38,7 @@ def parse(filename):
         elif cmd == 'switch':
             B = light.switch(x1, y1, x2, y2)
 
-    return B
+    return light.count()
     
     
 def main():
@@ -56,7 +49,6 @@ def main():
     filename = args.input
     f = parse(filename)
     print(f)
-    print("hello")
 
 if __name__ == '__main__':
     main()
