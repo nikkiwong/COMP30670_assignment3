@@ -1,14 +1,15 @@
 import argparse
 import urllib.request
 import numpy as np
-from led_file import Lights
+from led_file import *
 
 import time
 from _operator import length_hint
+from src import led_file
 
 start = time.time()
 
-# help(urllib.request.urlopen)
+# help(urllib.request.urlopen) 
 
 def read_uri(filename="input_assign3"):
     '''A function to opens and reads a file/url'''
@@ -43,7 +44,7 @@ def execute_cmd(filename):
     B = test_coord(filename)
     size = B[1]
     A = B[0]
-    light = Lights(size)
+    light = led_file.Lights(size)
     for i in range (1, len(A)-1):
         cmd = A[i][0]
         x1 = int(A[i][1])

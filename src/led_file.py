@@ -1,5 +1,5 @@
 import numpy as np
-
+ 
 class Lights:
     def __init__(self, s):
         self.size = s

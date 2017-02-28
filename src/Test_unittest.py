@@ -42,7 +42,7 @@ class LED_Tests(unittest.TestCase):
         expected=6
         self.assertEqual(counts, expected, "Number of lights switched didn't match")
 
- 
+  
 #     def test_ReadFileNotMatch(self):
 #         fm = mainfile.read_uri
 #         self.assertNotEqual(fm, 0, "The file wasn't read correctly")
