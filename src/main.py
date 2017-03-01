@@ -1,7 +1,7 @@
 import argparse
 import urllib.request
 import numpy as np
-from .led_file import *
+from led_file import *
 
 import time
 from _operator import length_hint
@@ -18,9 +18,8 @@ def read_uri(filename="input_assign3"):
     else:
         return open(filename).read()
     
-def parse(filename):
+def parse(buffer):
     '''A function that parses a file, separating and storing them individually into elements in a multidimensional array'''
-    buffer = read_uri(filename=filename)
 
     newfile = []
     line = buffer.replace(',', ' ')
@@ -97,6 +96,8 @@ def main():
     parser.add_argument('--input', help='input help')
 #     parser.add_argument('--kind', help='class type')
     args = parser.parse_args()
+    buffer = read_uri(filename=filename)
+    p = parse(buffer)
     filename = args.input
     f = execute_cmd(filename)
     print(f)
