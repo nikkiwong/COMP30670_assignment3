@@ -10,7 +10,7 @@ setup(name="ledtester",
       license="GPL3",
       packages=['src'],
       entry_points={
-          'console_scripts':['led_tester=src.main:main']
+          'console_scripts':['ledtester=src.main:main']
       },
       install_requires=[
           'nose',
