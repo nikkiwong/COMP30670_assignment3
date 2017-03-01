@@ -23,9 +23,10 @@ def parse(buffer):
 
     newfile = []
     line = buffer.replace(',', ' ')
-    size = 0
+    
     line = line.split('\n')
-    if len(line[0])==1:
+    size = 0
+    if len(line[0][0])==1:
         size = int(line[0])
     
     for x in line:
