@@ -23,9 +23,10 @@ def parse(buffer):
 
     newfile = []
     line = buffer.replace(',', ' ')
-    
+    size = 0
     line = line.split('\n')
-    size = int(line[0])
+    if len(line[0])==1:
+        size = int(line[0])
     
     for x in line:
         values = x.strip().split()
@@ -38,30 +39,9 @@ def parse(buffer):
     A=np.array(newfile)
     return A, size
 
-def execute_cmd(filename):
-    '''A function that parses the file further and executes the commands'''
-    B = test_coord(filename)
-    size = B[1]
-    A = B[0]
-    light = led_file.Lights(size)
-    for i in range (1, len(A)-1):
-        cmd = A[i][0]
-        x1 = int(A[i][1])
-        y1 = int(A[i][2])
-        x2 = int(A[i][3])
-        y2 = int(A[i][4])
-        if cmd == 'turn on':
-            light.turnOn(x1, y1, x2, y2)
-        elif cmd == 'turn off':
-            light.turnOff(x1, y1, x2, y2)
-        elif cmd == 'switch':
-            light.switch(x1, y1, x2, y2)
-
-    return light.count()
-    
 def test_coord(filename):
     '''A function to make sure that the co-ordinates are within the grid size given'''
-    A = parse(filename)
+    A = filename
     coord = A[0]
     size = A[1]
     for i in range(1, len(coord)-1):
@@ -90,16 +70,39 @@ def test_coord(filename):
             pts4=size-1
         coord[i][4]=pts4
     return coord, size
+
+def execute_cmd(filename):
+    '''A function that parses the file further and executes the commands'''
+    B = filename
+    size = B[1]
+    A = B[0]
+    light = led_file.Lights(size)
+    for i in range (1, len(A)-1):
+        cmd = A[i][0]
+        x1 = int(A[i][1])
+        y1 = int(A[i][2])
+        x2 = int(A[i][3])
+        y2 = int(A[i][4])
+        if cmd == 'turn on':
+            light.turnOn(x1, y1, x2, y2)
+        elif cmd == 'turn off':
+            light.turnOff(x1, y1, x2, y2)
+        elif cmd == 'switch':
+            light.switch(x1, y1, x2, y2)
+
+    return light.count()
+    
     
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', help='input help')
 #     parser.add_argument('--kind', help='class type')
     args = parser.parse_args()
+    filename = args.input
     buffer = read_uri(filename=filename)
     p = parse(buffer)
-    filename = args.input
-    f = execute_cmd(filename)
+    t = test_coord(p)
+    f = execute_cmd(t)
     print(f)
     
 
