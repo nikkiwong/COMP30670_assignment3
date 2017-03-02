@@ -5,26 +5,19 @@ import numpy as np
 import led_file 
 
 class LED_Tests(unittest.TestCase):
-    testLine1 = "turn on 5,5 through 9,9"
-    testLine2 = "yurn on 0,0 through 9,9"
-    testLine3 = "turn off 0,0 through 9,9"
-    testLine4 = "switch 0,0 through 9,9"
+    testLine1 = "10" " \n turn on 5,5 through 9,9"
+    testLine2 = "10" " \n yurn on 0,0 through 9,9"
+    testLine3 = "10" " \n turn off 0,0 through 9,9"
+    testLine4 = "10" " \n switch 0,0 through 9,9"
     grid = [[False] * 5 for _ in range(5)]
     A = np.array(grid)
+    
     def test_parse(self):
         t = parse(LED_Tests.testLine1)
         t = parse(LED_Tests.testLine2)
         t = parse(LED_Tests.testLine3)
         t = parse(LED_Tests.testLine4)
         self.assertEqual(len(t[0][0]), 5, "Didnt parse properly")
-    
-    def test_execute_cmd(self):
-        t = parse(LED_Tests.testLine1)
-        print(t)
-        x = test_coord(t)
-        print(x)
-        x = execute_cmd(x)
-        print(x)
         
     def test_read(self):
         filename = "../data/input_assign3.txt"

@@ -25,10 +25,8 @@ def parse(buffer):
     line = buffer.replace(',', ' ')
     
     line = line.split('\n')
-    size = 0
-    if len(line[0][0])==1:
-        size = int(line[0])
-    
+    size = int(line[0])
+
     for x in line:
         values = x.strip().split()
         if 'through' in values:
@@ -78,7 +76,7 @@ def execute_cmd(filename):
     size = B[1]
     A = B[0]
     light = led_file.Lights(size)
-    for i in range (1, len(A)-1):
+    for i in range (0, len(A)-1):
         cmd = A[i][0]
         x1 = int(A[i][1])
         y1 = int(A[i][2])
