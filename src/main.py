@@ -12,14 +12,19 @@ start = time.time()
 # help(urllib.request.urlopen) 
 
 def read_uri(filename="input_assign3"):
+    
     '''A function to opens and reads a file/url'''
+    
     if filename.startswith('http'):
         return urllib.request.urlopen(filename).read().decode('utf-8')       
     else:
         return open(filename).read()
     
 def parse(buffer):
-    '''A function that parses a file, separating and storing them individually into elements in a multidimensional array'''
+    
+    '''A function that parses a file, separating and storing them individually into elements in a multidimensional array
+    
+    It returns an array containing the command and co-ordinates, and a variable containing the size of the grid'''
 
     newfile = []
     line = buffer.replace(',', ' ')
@@ -39,7 +44,11 @@ def parse(buffer):
     return A, size
 
 def test_coord(filename):
-    '''A function to make sure that the co-ordinates are within the grid size given'''
+    
+    '''A function to make sure that the co-ordinates are within the grid size given
+    
+    It returns an array containing the command and co-ordinates, and a variable containing the size of the grid '''
+    
     A = filename
     coord = A[0]
     size = A[1]
@@ -71,7 +80,13 @@ def test_coord(filename):
     return coord, size
 
 def execute_cmd(filename):
-    '''A function that parses the file further and executes the commands'''
+    
+    '''A function that parses the file further into the commands and the axis on the grid for every line and executes 
+    those commands appropriately. It also does an error check for spelling mistakes. There are three possible commands,
+    therefore if the words do not match, then it moves to the next line.
+    
+    It returns the count of lights turned on'''
+    
     B = filename
     size = B[1]
     A = B[0]
@@ -93,9 +108,13 @@ def execute_cmd(filename):
     
     
 def main():
+    
+    '''This function executes the functions for parsing the file and executing the commands for the lights
+    
+    It returns the final count of lights turned on and the time it takes to execute this program'''
+    
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', help='input help')
-#     parser.add_argument('--kind', help='class type')
     args = parser.parse_args()
     filename = args.input
     buffer = read_uri(filename=filename)
@@ -104,11 +123,8 @@ def main():
     f = execute_cmd(t)
     print(f)
     
+    end = time.time()
+    print(end - start, 'seconds')
 
 if __name__ == '__main__':
     main()
-
-end = time.time()
-print(end - start, 'seconds')
-#print('{}{}').__format__(filename, tester.count...
-    
